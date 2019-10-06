@@ -1,5 +1,4 @@
-from flask import Flask, request, make_response, Response
-import simplejson
+from flask import Flask, request, make_response, Response, json
 import marshmallow
 from collections import namedtuple
 
@@ -150,7 +149,7 @@ class FlaskSwaggerTypes:
 
         swagger_spec_tree_without_empty_fields = {k: v for k, v in swagger_spec_tree.items() if v}
 
-        return simplejson.dumps(swagger_spec_tree_without_empty_fields, indent=4)
+        return json.dumps(swagger_spec_tree_without_empty_fields, indent=4)
 
 
     def _validate_input_data_with_schemas(self, request, input_schemas):
@@ -195,7 +194,7 @@ class FlaskSwaggerTypes:
             def modified_f(*a, **kw):
                 validatedData, errors = self._validate_input_data_with_schemas(request, input_schemas)
                 if errors:
-                    error_message = simplejson.dumps(errors)
+                    error_message = json.dumps(errors)
                     return make_response(error_message, 400)
 
                 request.fst_data = validatedData

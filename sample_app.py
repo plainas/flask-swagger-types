@@ -1,5 +1,4 @@
 from flask import Flask, request, make_response, Response
-import simplejson
 import marshmallow
 import pkg_resources
 from flaskswaggertypes import FlaskSwaggerTypes
