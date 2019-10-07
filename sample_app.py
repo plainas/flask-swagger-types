@@ -3,13 +3,13 @@ import marshmallow
 import pkg_resources
 from flaskswaggertypes import FlaskSwaggerTypes
 
-# 1. Define some general details of you want included in your spec.
+# 1. Define some general you want included in your spec.
 spec_metadata = {
     'title': "My fancy web api",
     'description': "Does some fancy api stuff on my fancy api-y server" ,
-    #'basePath': "/sofancy/",
+    #'basePath': "/sofancy/", #(optional)
     'version': "33",
-    #'host': "fancy.example.com"
+    #'host': "fancy.example.com" #(optional)
 }
 
 
@@ -20,20 +20,29 @@ class Pants(marshmallow.Schema):
     brand = marshmallow.fields.String() 
     size = marshmallow.fields.Int()
     
+# You can define collections by nesting an existing type with Nested()
 class PantsList(marshmallow.Schema):
     pants = marshmallow.fields.Nested(Pants, many=True)
+
+
+# responses are defined like so:
+responses = [
+    [ 200 , "Server will reply with 200 to successfull calls" ],
+    [ 400 , "Just mentioning that calls to this api method could go south"],
+]
+
+# you can optionally pass the response Schema
+responses_with_type = [
+    [ 200 , "Server will reply with 200 to successfull calls", PantsList ],
+    [ 400 , "Server will repply with 400 if it rails to retrieve a list of pants" ],
+]
+
 
 # 3. Create your flask app as usual
 app = Flask(__name__)
 
 # 4. Initialize flask-swagger-types
 fst = FlaskSwaggerTypes(app, spec_metadata)
-
-responses = [
-    [ 200 , "Server will reply with 200 to successfull calls" ],
-    [ 400 , "Just mentioning that calls to this api method could go south"],
-]
-
 
 # 5. Define some routes with @Fstroute()
 @fst.Fstroute('/savePants', "POST", {'body' : Pants }, responses)
@@ -44,7 +53,7 @@ def saveYourFancyPants():
     return "Success!!!"
 
 
-# parth paramters are parsed and will automatically show up in your swagger spec 
+# path paramters are parsed and will automatically show up in your swagger spec 
 # without the need to manually pass its schema. 
 @fst.Fstroute('/getManyPants/<int:size>/<string:brand>', "GET", {}, responses )
 def getManyFancyPants(size, brand):
@@ -53,14 +62,7 @@ def getManyFancyPants(size, brand):
     return "your pants list here"
 
 
-# you can optionally pass the response Schema
-responses = [
-    [ 200 , "Server will reply with 200 to successfull calls", PantsList ],
-    [ 400 , "Server will repply with 400 if it rails to retrieve a list of pants" ],
-]
-
-
-@fst.Fstroute('/getManyPants', "GET", {}, responses)
+@fst.Fstroute('/getFancyPants', "GET", {}, responses_with_type)
 def getFancyPants():
     pantslistschema = PantsList()
     empty_list = pantslistschema.dumps([])
