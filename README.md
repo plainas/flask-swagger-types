@@ -24,7 +24,7 @@ import marshmallow
 import pkg_resources
 from flaskswaggertypes import FlaskSwaggerTypes
 
-# 1. Define some general you want included in your spec.
+# 1. Define some general info you want included in your spec.
 spec_metadata = {
     'title': "My fancy web api",
     'description': "Does some fancy api stuff on my fancy api-y server" ,
