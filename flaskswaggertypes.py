@@ -1,6 +1,7 @@
 from flask import Flask, request, make_response, Response, json
 import marshmallow
 from collections import namedtuple
+import pkg_resources
 
 from apispec.ext.marshmallow.swagger import fields2jsonschema, schema2jsonschema, schema2parameters, fields2parameters
 from werkzeug.routing import parse_rule as werkzeurg_parse_rule
@@ -10,7 +11,7 @@ from werkzeug.routing import parse_rule as werkzeurg_parse_rule
 #   * Tags
 
 # Not supported by design
-#   * OpenApi v3 (currently only version 2.0 is supported)
+#   * OpenApi v3 (only version 2.0 is supported)
 #   * Fine grain security (this will suport global security definitions only)
 
 
@@ -25,7 +26,11 @@ class FlaskSwaggerTypes:
         self.swagger_definition_schemas = []
         self.swagger_metadata = self.SpecMetadata(**spec_metadata)
         self.flask_app.add_url_rule("/swagger_spec", "getSwaggerSpec" , self.getSwaggerSpec)
-        
+        self.flask_app.add_url_rule("/swagger_ui", "getSwaggerUi" , self.getSwaggerUi)
+
+    def getSwaggerUi(self):
+        return pkg_resources.resource_string(__name__, 'swagger.html')
+
     def getSwaggerSpec(self):
             spec_text = self.generate_swagger_spec()
             resp = Response(spec_text)

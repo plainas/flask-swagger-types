@@ -1,6 +1,8 @@
 # Flask-swagger-types
 
-Flask-swagger-types is a swagger spec generator and type checker for flask applications. Define marshmallow schemas for your input data and responses, anotate your routes with `@FlaskSwaggerTypes.Fstroute` using these schemas, and get a swagger spec free at `[YOUR_APP_URL]/swagger_spec`
+Flask-swagger-types is a [swagger](https://swagger.io/) spec generator and type checker for flask applications. Define [marshmallow](https://marshmallow.readthedocs.io/en/stable/index.html) schemas for your input data and responses, anotate your routes with `@FlaskSwaggerTypes.Fstroute` using these schemas, and get a swagger spec free at `[YOUR_APP_URL]/swagger_spec`.
+
+Swagger_ui is exposed for convenience at `[YOUR_APP_URL]/swagger_ui`
 
 No hand written swagger spec chunks or monster docstrings non-sense. Your swagger spec is generated from your application semantics. Why wouldn't it, really?
 
@@ -11,7 +13,7 @@ Flask-swagger-types is **not** a flask plugin. It is just a tiny helper with a s
 # Installation
 
 ```bash
-sudo pip3 install https://github.com/plainas/flask-swagger-types/zipball/master
+pip3 install https://github.com/plainas/flask-swagger-types/zipball/master
 ```
 
 # Example app:

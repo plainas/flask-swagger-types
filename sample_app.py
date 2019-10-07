@@ -69,3 +69,5 @@ def getFancyPants():
 
 # 6. Start your flask app as usual
 app.run()
+# Your swagger spec can now be accessed at [YOUR_APP_URL]/swagger_spec
+# To browse your api with swager-ui, go to [YOUR_APP_URL]/swagger_ui?url=/swagger_spec#/default
