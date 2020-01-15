@@ -14,7 +14,7 @@ setup(name='flaskswaggertypes',
             'Flask==1.1.1',
       ],
       package_dir={
-            'fstdata':'data'
+            'fstdata':'data',
       },
       package_data={
             'fstdata': ['swagger.html'],
