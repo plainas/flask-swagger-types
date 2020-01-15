@@ -14,6 +14,10 @@ setup(name='flaskswaggertypes',
             'marshmallow==2.15.1',
             'Flask==1.1.1',
       ],
-      data_files=[('', ['swagger.html'])],
+      package_data={
+            '': ['swagger.html'],
+      }
+      
+      #data_files=[('', ['swagger.html'])],
       include_package_data=True,
 )
