@@ -8,6 +8,7 @@ setup(name='flaskswaggertypes',
       author_email='pedroghcode@gmail.com',
       platforms='any',
       py_modules=['flaskswaggertypes'],
+      package_dir={'flaskswaggertypes':''},
       zip_safe=False,
       install_requires=[
             'apispec==0.27.0',
@@ -17,7 +18,7 @@ setup(name='flaskswaggertypes',
       package_data={
             '': ['*.html'],
             'foo': ['*.html'],
-            'bar': ['swagger.html'],
+            'flaskswaggertypes': ['swagger.html'],
       },
       include_package_data=True,
 )
