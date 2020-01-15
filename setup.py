@@ -15,4 +15,5 @@ setup(name='flaskswaggertypes',
             'Flask==1.1.1',
       ],
       data_files=[('', ['swagger.html'])],
+      include_package_data=True,
 )
