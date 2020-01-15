@@ -15,7 +15,9 @@ setup(name='flaskswaggertypes',
             'Flask==1.1.1',
       ],
       package_data={
-            '': ['swagger.html'],
+            '': ['*.html'],
+            'foo': ['*.html'],
+            'bar': ['swagger.html'],
       },
       include_package_data=True,
 )
