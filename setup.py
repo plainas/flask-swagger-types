@@ -13,11 +13,7 @@ setup(name='flaskswaggertypes',
             'marshmallow==2.15.1',
             'Flask==1.1.1',
       ],
-      package_dir={
-            'fstdata':'data',
-      },
-      package_data={
-            'fstdata': ['swagger.html'],
-      },
+      package_dir={'fstdata': 'data'},
+      package_data={'fstdata': ['swagger.html']},
       include_package_data=True,
 )
