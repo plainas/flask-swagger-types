@@ -14,12 +14,12 @@ setup(name='flaskswaggertypes',
             'Flask==1.1.1',
       ],
       package_dir={
-            'flaskswaggertypes':''
+            'fstdata':'data'
       }
       package_data={
             'data': ['*.html'],
             'foo': ['*.html'],
-            'flaskswaggertypes': ['swagger.html'],
+            'fstdata': ['swagger.html'],
       },
       include_package_data=True,
 )
