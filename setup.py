@@ -13,6 +13,9 @@ setup(name='flaskswaggertypes',
             'marshmallow==2.15.1',
             'Flask==1.1.1',
       ],
+      package_dir={
+            'flaskswaggertypes':''
+      }
       package_data={
             'data': ['*.html'],
             'foo': ['*.html'],
