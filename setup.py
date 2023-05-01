@@ -12,7 +12,7 @@ setup(name='flaskswaggertypes',
       install_requires=[
             'apispec==0.27.0',
             'marshmallow==2.15.1',
-            'Flask==1.1.1',
+            'Flask==2.3.2',
       ],
       data_files=[('', ['swagger.html'])],
 )
